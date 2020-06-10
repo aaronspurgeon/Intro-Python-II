@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -33,13 +34,42 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+
 #
 # Main
 #
 
 # Make a new player object that is currently in the 'outside' room.
+aaron = Player("Aaron", room['outside'])
 
 # Write a loop that:
+choice = 0
+while True:
+    print('Type (q) to quit')
+    print(f'{aaron.name} is currently in {aaron.current_room.name}')
+    print(f'{aaron.current_room.description}')
+
+    try:
+        if (choice == 'q'):
+            break
+
+        if aaron.current_room.name == 'outside':
+            choice = input(
+                'Please select (n) to head into the Foyer: ')
+        elif aaron.current_room.name == 'foyer':
+            choice = input(
+                'Select (n) to venture to the Overlook or select (e) to explore the Narrow. Otherwise select(s) to go back: ')
+        elif aaron.current_room.name == 'overlook':
+            choice = input(
+                'Please select (s) to head back into the Foyer: ')
+        elif aaron.current_room.name == 'narrow':
+            choice = input(
+                'Please select (w) to head into the Foyer or select (n) to head to the Treasure room: ')
+        else:
+            choice = input(
+                'Please select (s) to head into the Narrow: ')
+    except ValueError:
+        print('Please select a valid directional movement')
 #
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
