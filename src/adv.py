@@ -100,6 +100,8 @@ while True:
         elif (aaron.current_room.name == 'Treasure Chamber' and choice == 's'):
             aaron.current_room = room['narrow']
             location()
+        else:
+            print('Please enter a valid directional movement')
 
     except ValueError:
         print('Please select a valid directional movement')
