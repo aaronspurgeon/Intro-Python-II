@@ -49,6 +49,12 @@ print('Type (q) to quit')
 print(f'{aaron.name} is currently in {aaron.current_room.name}')
 print(f'{aaron.current_room.description}')
 
+
+def location():
+    print(f'{aaron.name} is currently in {aaron.current_room.name}')
+    print(f'{aaron.current_room.description}')
+
+
 while True:
 
     if aaron.current_room.name == 'Outside Cave Entrance':
@@ -72,36 +78,28 @@ while True:
             break
         if (aaron.current_room.name == 'Outside Cave Entrance' and choice == 'n'):
             aaron.current_room = room['foyer']
-            print(f'{aaron.name} is currently in {aaron.current_room.name}')
-            print(f'{aaron.current_room.description}')
+            location()
         elif (aaron.current_room.name == 'Foyer' and choice == 'n'):
             aaron.current_room = room['overlook']
-            print(f'{aaron.name} is currently in {aaron.current_room.name}')
-            print(f'{aaron.current_room.description}')
+            location()
         elif (aaron.current_room.name == 'Foyer' and choice == 'e'):
             aaron.current_room = room['narrow']
-            print(f'{aaron.name} is currently in {aaron.current_room.name}')
-            print(f'{aaron.current_room.description}')
+            location()
         elif (aaron.current_room.name == 'Foyer' and choice == 's'):
             aaron.current_room = room['outside']
-            print(f'{aaron.name} is currently in {aaron.current_room.name}')
-            print(f'{aaron.current_room.description}')
+            location()
         elif (aaron.current_room.name == 'Grand Overlook' and choice == 's'):
             aaron.current_room = room['foyer']
-            print(f'{aaron.name} is currently in {aaron.current_room.name}')
-            print(f'{aaron.current_room.description}')
+            location()
         elif (aaron.current_room.name == 'Narrow Passage' and choice == 'w'):
             aaron.current_room = room['foyer']
-            print(f'{aaron.name} is currently in {aaron.current_room.name}')
-            print(f'{aaron.current_room.description}')
+            location()
         elif (aaron.current_room.name == 'Narrow Passage' and choice == 'n'):
             aaron.current_room = room['treasure']
-            print(f'{aaron.name} is currently in {aaron.current_room.name}')
-            print(f'{aaron.current_room.description}')
+            location()
         elif (aaron.current_room.name == 'Treasure Chamber' and choice == 's'):
             aaron.current_room = room['narrow']
-            print(f'{aaron.name} is currently in {aaron.current_room.name}')
-            print(f'{aaron.current_room.description}')
+            location()
 
     except ValueError:
         print('Please select a valid directional movement')
