@@ -46,20 +46,23 @@ aaron = Player("Aaron", room['outside'])
 
 
 def location():
+    print('Type (q) to quit')
     print(f'{aaron.name} is currently in {aaron.current_room.name}')
     print(f'{aaron.current_room.description}')
 
 
 while True:
-    print('Type (q) to quit')
-    print(f'{aaron.name} is currently in {aaron.current_room.name}')
-    print(f'{aaron.current_room.description}')
+    location()
     choice = input('Enter a direction: ')
 
     if choice in {'n', 's', 'e', 'w'}:
-        if hasattr(aaron.current_room, f'{choice}_to'):
+        try:
+            hasattr(aaron.current_room, f'{choice}_to')
             aaron.current_room = getattr(
                 aaron.current_room, f'{choice}_to')
+            location()
+        except AttributeError:
+            print('Please select a valid direction')
 
 
 #
