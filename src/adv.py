@@ -52,13 +52,14 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-aaron = Player("Aaron", room['overlook'])
-aaron.items = [torch, compass, coin]
+aaron = Player("Aaron", room['outside'])
 
 
 # Write a loop that:
 
 # functions
+
+
 def location():
     print('Type (q) to quit')
     print(f'{aaron.name} is currently in {aaron.current_room.name}')
@@ -66,37 +67,7 @@ def location():
     print(aaron.current_room)
 
 
-def inventory():
-    output = f'This is your current inventory: '
-    for i in aaron.items:
-        output += f' {i.name} '
-    print(output)
-
-
-def getItem(item):
-    for i in aaron.current_room.items:
-        if i.name == item:
-            aaron.items.append(i)
-            aaron.current_room.items.remove(i)
-
-
-for i in aaron.current_room.items:
-    print(i.name)
-getItem('Flask')
-for i in aaron.current_room.items:
-    print(i.name)
-inventory()
-
-
-def dropItem(item):
-    for i in aaron.items:
-        if i.name == item:
-            aaron.items.remove(i)
-            print(f'{i.name} was removed')
-
-
-dropItem('Coin')
-inventory()
+aaron.inventory()
 
 # while True:
 #     location()
