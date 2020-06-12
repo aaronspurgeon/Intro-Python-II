@@ -67,29 +67,35 @@ def location():
     print(aaron.current_room)
 
 
-aaron.inventory()
+while True:
+    location()
+    get_item = 'Get'
+    aaron.inventory()
+    choice = input('What do you do? Venture forth (v) ? Or pickup items (p) ?')
 
-# while True:
-#     location()
-#     choice = input('Enter a direction: ')
+    if choice == 'v':
+        direction = input('Enter a direction: ')
+        if direction in {'n', 's', 'e', 'w'}:
+            try:
+                hasattr(aaron.current_room, f'{direction}_to')
+                aaron.current_room = getattr(
+                    aaron.current_room, f'{direction}_to')
 
-#     if choice in {'n', 's', 'e', 'w'}:
-#         try:
-#             hasattr(aaron.current_room, f'{choice}_to')
-#             aaron.current_room = getattr(
-#                 aaron.current_room, f'{choice}_to')
-#         except AttributeError:
-#             print('Please select a valid direction')
-#     if (choice == 'q'):
-#         break
-
-
-#
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
+            except AttributeError:
+                print('Please select a valid direction')
+        if (direction == 'q'):
+            break
+    elif choice == 'p':
+        pickup = input(
+            f'Type {get_item} (name of item) to place an item in your inventory.')
+        grabbed_item = pickup[4:]
+        aaron.getItem(grabbed_item)
+        #
+        # * Prints the current room name
+        # * Prints the current description (the textwrap module might be useful here).
+        # * Waits for user input and decides what to do.
+        #
+        # If the user enters a cardinal direction, attempt to move to the room there.
+        # Print an error message if the movement isn't allowed.
+        #
+        # If the user enters "q", quit the game.
