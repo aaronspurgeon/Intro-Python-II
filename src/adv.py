@@ -17,21 +17,21 @@ coin = Item(
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons", torch),
+                     "North of you, the cave mount beckons", [torch]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east.""", compass),
+passages run north and east.""", [compass]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm.""", flask),
+the distance, but there is no way across the chasm.""", [flask]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air.""", helmet),
+to north. The smell of gold permeates the air.""", [helmet]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south.""", coin),
+earlier adventurers. The only exit is to the south.""", [coin]),
 }
 
 
@@ -62,7 +62,7 @@ def location():
     print('Type (q) to quit')
     print(f'{aaron.name} is currently in {aaron.current_room.name}')
     print(f'{aaron.current_room.description}')
-    print(f'Current items in room are: {aaron.current_room.items.name}')
+    print(aaron.current_room)
 
 
 while True:

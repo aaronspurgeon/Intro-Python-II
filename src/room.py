@@ -11,13 +11,15 @@ class Room:
         self.n_to = None
 
     def __str__(self):
-        output = f'{self.name}: {self.description}\n Items here: {self.items}'
-        if self.s_to:
-            output += 'To the south is: ' + self.s_to.name + '\n'
-        if self.e_to:
-            output += 'To the south is: ' + self.s_to.name + '\n'
-        if self.w_to:
-            output += 'To the south is: ' + self.s_to.name + '\n'
-        if self.n_to:
-            output += 'To the south is: ' + self.s_to.name + '\n'
+        output = f'Items here: '
+        for item in self.items:
+            output += f'{item.name}'
+        # if self.s_to:
+        #     output += 'To the south is: ' + self.s_to.name + '\n'
+        # if self.e_to:
+        #     output += 'To the south is: ' + self.s_to.name + '\n'
+        # if self.w_to:
+        #     output += 'To the south is: ' + self.s_to.name + '\n'
+        # if self.n_to:
+        #     output += 'To the south is: ' + self.s_to.name + '\n'
         return output
