@@ -70,8 +70,10 @@ def location():
 while True:
     location()
     get_item = 'Get'
+    drop_item = 'Drop'
     aaron.inventory()
-    choice = input('What do you do? Venture forth (v) ? Or pickup items (p) ?')
+    choice = input(
+        'What do you do? Venture forth (v) ? Or pickup items (p) ? Or manage inventory (m) ?: ')
 
     if choice == 'v':
         direction = input('Enter a direction: ')
@@ -87,9 +89,16 @@ while True:
             break
     elif choice == 'p':
         pickup = input(
-            f'Type {get_item} (name of item) to place an item in your inventory.')
+            f'Type {get_item} (name of item) to place an item in your inventory: ')
         grabbed_item = pickup[4:]
         aaron.getItem(grabbed_item)
+
+    elif len(aaron.items) > 0:
+        if choice == 'm':
+            manage = input(
+                f'Type {drop_item} (name of item) to drop the item from your inventory: ')
+            dropped_item = manage[5:]
+            aaron.dropItem(dropped_item)
         #
         # * Prints the current room name
         # * Prints the current description (the textwrap module might be useful here).

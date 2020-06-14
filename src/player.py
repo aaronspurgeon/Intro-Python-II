@@ -20,6 +20,7 @@ class Player:
             if i.name == item:
                 self.items.append(i)
                 self.current_room.items.remove(i)
+                print(f'{self.name} has picked up {item}')
 
     def dropItem(self, item):
         for i in self.items:
