@@ -11,9 +11,12 @@ class Room:
         self.n_to = None
 
     def __str__(self):
-        output = f'Items here: '
-        for item in self.items:
-            output += f'{item.name}'
+        if len(self.items) > 0:
+            output = f'Items here: '
+            for item in self.items:
+                output += f' {item.name}'
+        else:
+            output = 'No items in the area'
         # if self.s_to:
         #     output += 'To the south is: ' + self.s_to.name + '\n'
         # if self.e_to:

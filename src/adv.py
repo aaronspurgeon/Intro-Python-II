@@ -1,6 +1,8 @@
 from room import Room
 from player import Player
 from items import Item
+from items import Equip_armor
+from items import Equip_trinkets
 
 # rooms items
 torch = Item('Torch', 'A simple torch, seems to be losing its burn quickly')
@@ -8,8 +10,12 @@ compass = Item(
     'Compass', 'Dirt covered compass, seems to have been here awhile.')
 flask = Item(
     'Flask', 'A jeweled covered flask, there seems to be bit of foul smelling liquid at the bottom')
-helmet = Item(
-    'Helmet', 'A broken helmet, the aged leather gives it an ancient look')
+helmet = Equip_armor(
+    'Helmet', 'A broken helmet, the aged leather gives it an ancient look', 20, 0)
+spaulders = Equip_armor(
+    'Spaulders', 'Ancient shoulder armor, seems it belongs with the helmet.', 20, 0)
+amulet = Equip_trinkets(
+    'Amulet', 'Rare amulet, you can feel its power pulse', 50, 50)
 coin = Item(
     'Coin', 'A lone gold coin found by the exit. Whoever looted this place left in a hurry.')
 
@@ -20,14 +26,14 @@ room = {
                      "North of you, the cave mount beckons", [torch]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east.""", [compass]),
+passages run north and east.""", [compass, amulet]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
 the distance, but there is no way across the chasm.""", [flask]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air.""", [helmet]),
+to north. The smell of gold permeates the air.""", [helmet, spaulders]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
@@ -52,7 +58,8 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-aaron = Player("Aaron", room['outside'])
+aaron = Player("Aaron", room['outside'], 0, 100, 0)
+print(aaron)
 
 
 # Write a loop that:
@@ -65,6 +72,7 @@ def location():
     print(f'{aaron.name} is currently in {aaron.current_room.name}')
     print(f'{aaron.current_room.description}')
     print(aaron.current_room)
+    print(aaron)
 
 
 while True:
